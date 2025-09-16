@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rashedul Islam - Backend Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ff88;
+            --secondary: #ff0080;
+            --accent: #0080ff;
+            --dark: #0a0a0a;
+            --darker: #050505;
+        }
+        
+        body { 
+            font-family: 'Space Grotesk', sans-serif; 
+            background: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        
+        .neon-text {
+            text-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary), 0 0 15px var(--primary);
+        }
+        
+        .neon-border {
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 10px var(--primary), inset 0 0 10px rgba(0, 255, 136, 0.1);
+        }
+        
+        .cyber-grid {
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 20s linear infinite;
+        }
+        
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .floating-code {
+            position: absolute;
+            color: rgba(0, 255, 136, 0.3);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            animation: float 15s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        .glitch {
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+        
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            animation: glitch-1 0.5s infinite;
+            color: var(--secondary);
+            z-index: -1;
+        }
+        
+        .glitch::after {
+            animation: glitch-2 0.5s infinite;
+            color: var(--accent);
+            z-index: -2;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+        
+        @keyframes glitch-1 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(2px, -2px); }
+            40% { transform: translate(-2px, 2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+        }
+        
+        @keyframes glitch-2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, -2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(-2px, 2px); }
+        }
+        
+        .terminal-window {
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+        
+        .terminal-header {
+            background: linear-gradient(90deg, #333, #222);
+            padding: 8px 16px;
+            border-bottom: 1px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .skill-card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .skill-card:hover::before {
+            left: 100%;
+        }
+        
+        .skill-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+            transform: translateY(-5px);
+        }
+        
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .project-card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+            transform: translateY(-10px) rotateX(5deg);
+        }
+        
+        .hologram {
+            background: linear-gradient(45deg, 
+                rgba(0, 255, 136, 0.1) 0%, 
+                rgba(255, 0, 128, 0.1) 50%, 
+                rgba(0, 128, 255, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .typing-cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            animation: scan 3s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { top: 0; opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        
+        .data-stream {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--primary);
+            opacity: 0.6;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Matrix Background -->
+    <canvas id="matrix" class="matrix-bg"></canvas>
+    
+    <!-- Floating Code Elements -->
+    <div class="floating-code" style="left: 10%; animation-delay: 0s;">const server = express();</div>
+    <div class="floating-code" style="left: 30%; animation-delay: 2s;">app.use(cors());</div>
+    <div class="floating-code" style="left: 50%; animation-delay: 4s;">mongoose.connect();</div>
+    <div class="floating-code" style="left: 70%; animation-delay: 6s;">JWT.sign(payload);</div>
+    <div class="floating-code" style="left: 90%; animation-delay: 8s;">docker build -t app .</div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 hologram">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="mono text-xl font-bold neon-text">
+                    <span class="text-green-400">&gt;</span> rashedul.dev
+                </div>
+                <div class="hidden md:flex space-x-8 mono text-sm">
+                    <a href="#home" class="hover:text-green-400 transition-colors">[home]</a>
+                    <a href="#about" class="hover:text-green-400 transition-colors">[about]</a>
+                    <a href="#work" class="hover:text-green-400 transition-colors">[work]</a>
+                    <a href="#skills" class="hover:text-green-400 transition-colors">[skills]</a>
+                    <a href="#education" class="hover:text-green-400 transition-colors">[education]</a>
+                    <a href="#courses" class="hover:text-green-400 transition-colors">[courses]</a>
+                    <a href="#projects" class="hover:text-green-400 transition-colors">[projects]</a>
+                    <a href="#contact" class="hover:text-green-400 transition-colors">[contact]</a>
+                </div>
+                <button id="menu-toggle" class="md:hidden text-green-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative cyber-grid">
+        <div class="scan-line"></div>
+        <div class="text-center z-10 px-6">
+            <div class="mb-8">
+                <div class="terminal-window w-80 mx-auto mb-8">
+                    <div class="terminal-header">
+                        <div class="terminal-dot bg-red-500"></div>
+                        <div class="terminal-dot bg-yellow-500"></div>
+                        <div class="terminal-dot bg-green-500"></div>
+                        <span class="mono text-xs text-gray-400 ml-2">terminal</span>
+                    </div>
+                    <div class="p-4 mono text-sm">
+                        <div class="text-green-400">$ whoami</div>
+                        <div class="text-white">rashedul_islam</div>
+                        <div class="text-green-400 mt-2">$ cat role.txt</div>
+                        <div class="text-white" id="role-text">Backend Developer<span class="typing-cursor">|</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Image -->
+            <div class="relative mb-8">
+                <div class="w-48 h-48 md:w-64 md:h-64 mx-auto relative">
+                    <!-- Outer Neon Ring -->
+                    <div class="absolute inset-0 rounded-full neon-border animate-pulse"></div>
+                    
+                    <!-- Profile Image Container -->
+                    <div class="absolute inset-2 rounded-full overflow-hidden bg-gradient-to-br from-green-900 to-black">
+                        <!-- Placeholder Profile Image with Green Filter -->
+                        <div class="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center text-8xl md:text-9xl relative">
+                            👨‍💻
+                            <!-- Green Cyberpunk Overlay -->
+                            <div class="absolute inset-0 bg-green-400 opacity-20 mix-blend-overlay"></div>
+                            <!-- Scan Lines Effect -->
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-green-400 to-transparent opacity-10 animate-pulse"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Corner Brackets -->
+                    <div class="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-green-400"></div>
+                    <div class="absolute -top-2 -right-2 w-8 h-8 border-r-2 border-t-2 border-green-400"></div>
+                    <div class="absolute -bottom-2 -left-2 w-8 h-8 border-l-2 border-b-2 border-green-400"></div>
+                    <div class="absolute -bottom-2 -right-2 w-8 h-8 border-r-2 border-b-2 border-green-400"></div>
+                </div>
+                
+                <!-- Status Indicator -->
+                <div class="absolute top-4 right-4 md:top-8 md:right-8">
+                    <div class="flex items-center space-x-2 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1 border border-green-400/30">
+                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                        <span class="mono text-xs text-green-400">ONLINE</span>
+                    </div>
+                </div>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 glitch" data-text="RASHEDUL ISLAM">
+                RASHEDUL ISLAM
+            </h1>
+            
+            <div class="mono text-xl md:text-2xl mb-8 text-green-400">
+                <span class="text-gray-500">&lt;</span>
+                <span id="typing-role">Backend Architect</span>
+                <span class="text-gray-500">/&gt;</span>
+            </div>
+            
+            <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto text-gray-300 leading-relaxed">
+                Crafting scalable backend architectures with cutting-edge technologies. 
+                Specializing in high-performance APIs, microservices, and cloud-native solutions.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <button class="neon-border bg-transparent text-green-400 px-8 py-4 mono font-semibold hover:bg-green-400 hover:text-black transition-all duration-300">
+                    [VIEW_PROJECTS]
+                </button>
+                <button class="border border-gray-600 text-white px-8 py-4 mono font-semibold hover:border-green-400 hover:text-green-400 transition-all duration-300">
+                    [DOWNLOAD_CV]
+                </button>
+            </div>
+        </div>
+        
+        <div class="data-stream">
+            <div>CPU: 98%</div>
+            <div>RAM: 16GB</div>
+            <div>NET: 1Gbps</div>
+            <div>API: ONLINE</div>
+            <div>DB: CONNECTED</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold mb-4 mono">
+                    <span class="text-green-400">&gt;</span> about.exe
+                </h2>
+                <div class="w-32 h-1 bg-green-400 mx-auto"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-dot bg-red-500"></div>
+                            <div class="terminal-dot bg-yellow-500"></div>
+                            <div class="terminal-dot bg-green-500"></div>
+                            <span class="mono text-xs text-gray-400 ml-2">profile.js</span>
+                        </div>
+                        <div class="p-6 mono text-sm">
+                            <div class="text-purple-400">class</div> <div class="text-yellow-400 inline">BackendDeveloper</div> <div class="text-white inline">{</div>
+                            <div class="ml-4 mt-2">
+                                <div><span class="text-blue-400">constructor</span>() {</div>
+                                <div class="ml-4">
+                                    <div><span class="text-green-400">this</span>.name = <span class="text-orange-400">"Rashedul Islam"</span>;</div>
+                                    <div><span class="text-green-400">this</span>.experience = <span class="text-orange-400">"5+ years"</span>;</div>
+                                    <div><span class="text-green-400">this</span>.passion = <span class="text-orange-400">"Clean Code"</span>;</div>
+                                    <div><span class="text-green-400">this</span>.focus = <span class="text-orange-400">"Scalability"</span>;</div>
+                                </div>
+                                <div>}</div>
+                            </div>
+                            <div class="mt-2">}</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-bold text-green-400 mono">[SYSTEM_INFO]</h3>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        I'm a passionate backend developer who thrives on building robust, scalable systems. 
+                        My expertise lies in creating high-performance APIs, designing efficient database architectures, 
+                        and implementing DevOps practices that ensure seamless deployments.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed text-lg">
+                        With a strong foundation in modern JavaScript ecosystems and a deep understanding of 
+                        cloud technologies, I transform complex business requirements into elegant technical solutions.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mt-8">
+                        <div class="skill-card p-4 rounded-lg">
+                            <div class="text-green-400 text-2xl mb-2">⚡</div>
+                            <div class="mono text-sm font-semibold">Performance</div>
+                            <div class="text-xs text-gray-400">Optimized Solutions</div>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg">
+                            <div class="text-blue-400 text-2xl mb-2">🔒</div>
+                            <div class="mono text-sm font-semibold">Security</div>
+                            <div class="text-xs text-gray-400">Enterprise Grade</div>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg">
+                            <div class="text-purple-400 text-2xl mb-2">📈</div>
+                            <div class="mono text-sm font-semibold">Scalability</div>
+                            <div class="text-xs text-gray-400">Cloud Native</div>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg">
+                            <div class="text-orange-400 text-2xl mb-2">🛠️</div>
+                            <div class="mono text-sm font-semibold">DevOps</div>
+                            <div class="text-xs text-gray-400">CI/CD Expert</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="work" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold mb-4 mono">
+                    <span class="text-green-400">&gt;</span> work.log
+                </h2>
+                <div class="w-32 h-1 bg-green-400 mx-auto"></div>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- Current Position -->
+                <div class="skill-card p-8 rounded-lg relative">
+                    <div class="scan-line"></div>
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                                <h3 class="text-2xl font-bold text-green-400 mono">[BACKEND_DEVELOPER]</h3>
+                            </div>
+                            <div class="text-xl text-white mb-2">SM Technology, Betopia, Dhaka</div>
+                            <div class="mono text-sm text-blue-400 mb-4">Dec 2024 - Running</div>
+                        </div>
+                        <div class="text-4xl mb-4 md:mb-0">💼</div>
+                    </div>
+                    
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-dot bg-red-500"></div>
+                            <div class="terminal-dot bg-yellow-500"></div>
+                            <div class="terminal-dot bg-green-500"></div>
+                            <span class="mono text-xs text-gray-400 ml-2">current-role.md</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-300 leading-relaxed">
+                                I'm a Backend Developer at SM Technology, working closely with both the app and web teams to build and 
+                                maintain scalable, high-performance APIs and backend systems. I focus on developing robust server-side logic, 
+                                database architecture, and seamless integrations to support mobile and web applications.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="mono text-xs bg-green-900 text-green-400 px-3 py-1 rounded-full">Node.js</span>
+                        <span class="mono text-xs bg-blue-900 text-blue-400 px-3 py-1 rounded-full">API Development</span>
+                        <span class="mono text-xs bg-purple-900 text-purple-400 px-3 py-1 rounded-full">Database Design</span>
+                        <span class="mono text-xs bg-orange-900 text-orange-400 px-3 py-1 rounded-full">Team Collaboration</span>
+                    </div>
+                </div>
+
+                <!-- Previous Position -->
+                <div class="skill-card p-8 rounded-lg relative">
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+                                <h3 class="text-2xl font-bold text-blue-400 mono">[BACKEND_DEVELOPER_INTERN]</h3>
+                            </div>
+                            <div class="text-xl text-white mb-2">Solutiya Pvt Ltd, Dhaka</div>
+                            <div class="mono text-sm text-gray-400 mb-4">Jun 2024 - Nov 2024</div>
+                        </div>
+                        <div class="text-4xl mb-4 md:mb-0">🎓</div>
+                    </div>
+                    
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-dot bg-red-500"></div>
+                            <div class="terminal-dot bg-yellow-500"></div>
+                            <div class="terminal-dot bg-green-500"></div>
+                            <span class="mono text-xs text-gray-400 ml-2">internship-experience.md</span>
+                        </div>
+                        <div class="p-6">
+                            <p class="text-gray-300 leading-relaxed">
+                                Solutya is a technology solutions company specializing in software development and digital transformation. 
+                                During my internship, I gained hands-on experience in real-world projects, collaborating with developers to build 
+                                scalable web applications and enhance backend functionalities.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="mono text-xs bg-green-900 text-green-400 px-3 py-1 rounded-full">Web Development</span>
+                        <span class="mono text-xs bg-blue-900 text-blue-400 px-3 py-1 rounded-full">Backend Systems</span>
+                        <span class="mono text-xs bg-purple-900 text-purple-400 px-3 py-1 rounded-full">Team Projects</span>
+                        <span class="mono text-xs bg-yellow-900 text-yellow-400 px-3 py-1 rounded-full">Digital Solutions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold mb-4 mono">
+                    <span class="text-green-400">&gt;</span> skills.json
+                </h2>
+                <div class="w-32 h-1 bg-green-400 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Languages -->
+                <div class="skill-card p-6 rounded-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="mono font-semibold text-green-400">[LANGUAGES]</h3>
+                        <div class="text-2xl">💻</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="mono text-sm">JavaScript</span>
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="mono text-sm">TypeScript</span>
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="mono text-sm">C++</span>
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="mono text-sm">C</span>
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="skill-card p-6 rounded-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="mono font-semibold text-blue-400">[BACKEND]</h3>
+                        <div class="text-2xl">⚙️</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="mono text-sm">Node.js</span>
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="mono text-sm">Express.js</span>
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="mono text-sm">MongoDB</span>
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ORM/ODM -->
+                <div class="skill-card p-6 rounded-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="mono font-semibold text-purple-400">[ORM/ODM]</h3>
+                        <div class="text-2xl">🗄️</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="mono text-sm">Prisma</span>
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="mono text-sm">Mongoose</span>
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps -->
+                <div class="skill-card p-6 rounded-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="mono font-semibold text-orange-400">[DEVOPS]</h3>
+                        <div class="text-2xl">🚀</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="mono text-sm">Docker</span>
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="mono text-sm">GitHub Actions</span>
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="mono text-sm">Nginx</span>
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                                <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold mb-4 mono">
+                    <span class="text-green-400">&gt;</span> education.db
+                </h2>
+                <div class="w-32 h-1 bg-green-400 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Masters -->
+                <div class="skill-card p-8 rounded-lg relative">
+                    <div class="scan-line"></div>
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                            <h3 class="text-xl font-bold text-green-400 mono">[MSc_CSE]</h3>
+                        </div>
+                        <div class="text-3xl">🎓</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="text-lg font-semibold text-white mb-2">MSc in Computer Science and Engineering</div>
+                        <div class="text-blue-400 mono text-sm mb-2">Daffodil International University</div>
+                        <div class="text-gray-400 text-sm">Savar, Dhaka</div>
+                        <div class="mono text-xs text-green-400 mt-2">Status: Running</div>
+                    </div>
+                    
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-dot bg-red-500"></div>
+                            <div class="terminal-dot bg-yellow-500"></div>
+                            <div class="terminal-dot bg-green-500"></div>
+                            <span class="mono text-xs text-gray-400 ml-2">masters-program.json</span>
+                        </div>
+                        <div class="p-4 mono text-xs">
+                            <div class="text-purple-400">{</div>
+                            <div class="ml-4">
+                                <div><span class="text-blue-400">"degree"</span>: <span class="text-orange-400">"Masters"</span>,</div>
+                                <div><span class="text-blue-400">"field"</span>: <span class="text-orange-400">"Computer Science"</span>,</div>
+                                <div><span class="text-blue-400">"focus"</span>: <span class="text-orange-400">"Advanced Computing"</span></div>
+                            </div>
+                            <div class="text-purple-400">}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bachelors -->
+                <div class="skill-card p-8 rounded-lg relative">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
+                            <h3 class="text-xl font-bold text-blue-400 mono">[BSc_CSE]</h3>
+                        </div>
+                        <div class="text-3xl">📚</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="text-lg font-semibold text-white mb-2">BSc in Computer Science and Engineering</div>
+                        <div class="text-blue-400 mono text-sm mb-2">Daffodil Institute of IT</div>
+                        <div class="text-gray-400 text-sm">Dhanmondi, Dhaka</div>
+                        <div class="mono text-xs text-gray-400 mt-2">2017 - 2020</div>
+                    </div>
+                    
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-dot bg-red-500"></div>
+                            <div class="terminal-dot bg-yellow-500"></div>
+                            <div class="terminal-dot bg-green-500"></div>
+                            <span class="mono text-xs text-gray-400 ml-2">bachelor-program.json</span>
+                        </div>
+                        <div class="p-4 mono text-xs">
+                            <div class="text-purple-400">{</div>
+                            <div class="ml-4">
+                                <div><span class="text-blue-400">"degree"</span>: <span class="text-orange-400">"Bachelor"</span>,</div>
+                                <div><span class="text-blue-400">"field"</span>: <span class="text-orange-400">"Computer Science"</span>,</div>
+                                <div><span class="text-blue-400">"status"</span>: <span class="text-green-400">"Completed"</span></div>
+                            </div>
+                            <div class="text-purple-400">}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold mb-4 mono">
+                    <span class="text-green-400">&gt;</span> courses.array
+                </h2>
+                <div class="w-32 h-1 bg-green-400 mx-auto"></div>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- Course 1 -->
+                <div class="skill-card p-6 rounded-lg relative">
+                    <div class="scan-line"></div>
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                                <h3 class="text-lg font-bold text-green-400 mono">[DEVOPS_BOOTCAMP]</h3>
+                            </div>
+                            <div class="text-white font-semibold mb-1">Bootcamp: DevOps and Cloud Engineering</div>
+                            <div class="text-blue-400 mono text-sm mb-2">BongoDev</div>
+                            <div class="mono text-xs text-gray-400">May 2025 - Running</div>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 md:mt-0">
+                            <span class="mono text-xs bg-green-900 text-green-400 px-2 py-1 rounded">DevOps</span>
+                            <span class="mono text-xs bg-blue-900 text-blue-400 px-2 py-1 rounded">Cloud</span>
+                            <div class="text-2xl ml-2">☁️</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="skill-card p-6 rounded-lg relative">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
+                                <h3 class="text-lg font-bold text-blue-400 mono">[IBM_FULLSTACK]</h3>
+                            </div>
+                            <div class="text-white font-semibold mb-1">IBM Full-Stack JavaScript Developer Specialization</div>
+                            <div class="text-blue-400 mono text-sm mb-2">Coursera</div>
+                            <div class="mono text-xs text-gray-400">Oct 2024 - Dec 2024</div>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 md:mt-0">
+                            <span class="mono text-xs bg-yellow-900 text-yellow-400 px-2 py-1 rounded">JavaScript</span>
+                            <span class="mono text-xs bg-purple-900 text-purple-400 px-2 py-1 rounded">Full-Stack</span>
+                            <div class="text-2xl ml-2">🚀</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="skill-card p-6 rounded-lg relative">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-3 h-3 bg-purple-400 rounded-full"></div>
+                                <h3 class="text-lg font-bold text-purple-400 mono">[MERN_STACK]</h3>
+                            </div>
+                            <div class="text-white font-semibold mb-1">MERN Full Stack Web Development (batch-2)</div>
+                            <div class="text-blue-400 mono text-sm mb-2">Ostad Ltd.</div>
+                            <div class="mono text-xs text-gray-400">Nov 2023 - Jul 2024</div>
+                        </div>
+                        <div class="flex items-center gap-2 mt-4 md:mt-0">
+                            <span class="mono text-xs bg-green-900 text-green-400 px-2 py-1 rounded">MERN</span>
+                            <span class="mono text-xs bg-orange-900 text-orange-400 px-2 py-1 rounded">React</span>
+                            <span class="mono text-xs bg-blue-900 text-blue-400 px-2 py-1 rounded">Node.js</span>
+                            <div class="text-2xl ml-2">⚛️</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-bold mb-4 mono">
+                    <span class="text-green-400">&gt;</span> projects.db
+                </h2>
+                <div class="w-32 h-1 bg-green-400 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card rounded-lg p-6 relative">
+                    <div class="scan-line"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="mono text-green-400 font-semibold">[API_GATEWAY]</div>
+                        <div class="text-2xl">🌐</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Microservices Gateway</h3>
+                    <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+                        High-performance API gateway with rate limiting, authentication, 
+                        and service discovery. Handles 10k+ requests per second.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="mono text-xs bg-green-900 text-green-400 px-2 py-1 rounded">Node.js</span>
+                        <span class="mono text-xs bg-blue-900 text-blue-400 px-2 py-1 rounded">Redis</span>
+                        <span class="mono text-xs bg-purple-900 text-purple-400 px-2 py-1 rounded">Docker</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <button class="mono text-green-400 hover:text-green-300 text-sm">[VIEW_CODE]</button>
+                        <div class="mono text-xs text-gray-500">STATUS: LIVE</div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card rounded-lg p-6 relative">
+                    <div class="scan-line"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="mono text-blue-400 font-semibold">[REAL_TIME]</div>
+                        <div class="text-2xl">⚡</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">WebSocket Chat Engine</h3>
+                    <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+                        Scalable real-time messaging system with room management, 
+                        message persistence, and presence indicators.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="mono text-xs bg-green-900 text-green-400 px-2 py-1 rounded">Socket.io</span>
+                        <span class="mono text-xs bg-orange-900 text-orange-400 px-2 py-1 rounded">MongoDB</span>
+                        <span class="mono text-xs bg-red-900 text-red-400 px-2 py-1 rounded">Redis</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <button class="mono text-green-400 hover:text-green-300 text-sm">[VIEW_CODE]</button>
+                        <div class="mono text-xs text-gray-500">STATUS: BETA</div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card rounded-lg p-6 relative">
+                    <div class="scan-line"></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="mono text-purple-400 font-semibold">[BLOCKCHAIN]</div>
+                        <div class="text-2xl">🔗</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">DeFi Analytics API</h3>
+                    <p class="text-gray-400 mb-4 text-sm leading-relaxed">
+                        Cryptocurrency data aggregation service with real-time price feeds, 
+                        portfolio tracking, and market analysis.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="mono text-xs bg-yellow-900 text-yellow-400 px-2 py-1 rounded">Web3.js</span>
+                        <span class="mono text-xs bg-blue-900 text-blue-400 px-2 py-1 rounded">GraphQL</span>
+                        <span class="mono text-xs bg-green-900 text-green-400 px-2 py-1 rounded">PostgreSQL</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <button class="mono text-green-400 hover:text-green-300 text-sm">[VIEW_CODE]</button>
+                        <div class="mono text-xs text-gray-500">STATUS: DEV</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-6xl font-bold mb-4 mono">
+                <span class="text-green-400">&gt;</span> contact.init()
+            </h2>
+            <div class="w-32 h-1 bg-green-400 mx-auto mb-12"></div>
+            
+            <p class="text-xl mb-12 text-gray-300 mono">
+                Ready to build something extraordinary? Let's connect and create the future together.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="skill-card p-6 rounded-lg">
+                    <div class="text-3xl mb-4">📧</div>
+                    <div class="mono text-green-400 font-semibold mb-2">[EMAIL]</div>
+                    <div class="text-gray-400 text-sm">rashedul.dev@email.com</div>
+                </div>
+                <div class="skill-card p-6 rounded-lg">
+                    <div class="text-3xl mb-4">💼</div>
+                    <div class="mono text-blue-400 font-semibold mb-2">[LINKEDIN]</div>
+                    <div class="text-gray-400 text-sm">linkedin.com/in/rashedul</div>
+                </div>
+                <div class="skill-card p-6 rounded-lg">
+                    <div class="text-3xl mb-4">🐙</div>
+                    <div class="mono text-purple-400 font-semibold mb-2">[GITHUB]</div>
+                    <div class="text-gray-400 text-sm">github.com/rashedul-dev</div>
+                </div>
+            </div>
+            
+            <div class="terminal-window max-w-2xl mx-auto">
+                <div class="terminal-header">
+                    <div class="terminal-dot bg-red-500"></div>
+                    <div class="terminal-dot bg-yellow-500"></div>
+                    <div class="terminal-dot bg-green-500"></div>
+                    <span class="mono text-xs text-gray-400 ml-2">contact-form.js</span>
+                </div>
+                <div class="p-6">
+                    <form class="space-y-4 text-left">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="mono text-green-400 text-sm block mb-2">name:</label>
+                                <input type="text" class="w-full bg-black border border-gray-600 rounded px-3 py-2 mono text-sm focus:border-green-400 focus:outline-none" placeholder="your_name">
+                            </div>
+                            <div>
+                                <label class="mono text-green-400 text-sm block mb-2">email:</label>
+                                <input type="email" class="w-full bg-black border border-gray-600 rounded px-3 py-2 mono text-sm focus:border-green-400 focus:outline-none" placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="mono text-green-400 text-sm block mb-2">subject:</label>
+                            <input type="text" class="w-full bg-black border border-gray-600 rounded px-3 py-2 mono text-sm focus:border-green-400 focus:outline-none" placeholder="project_inquiry">
+                        </div>
+                        <div>
+                            <label class="mono text-green-400 text-sm block mb-2">message:</label>
+                            <textarea rows="4" class="w-full bg-black border border-gray-600 rounded px-3 py-2 mono text-sm focus:border-green-400 focus:outline-none resize-none" placeholder="tell_me_about_your_project()"></textarea>
+                        </div>
+                        <button type="submit" class="w-full neon-border bg-transparent text-green-400 py-3 mono font-semibold hover:bg-green-400 hover:text-black transition-all duration-300">
+                            [SEND_MESSAGE]
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="mono text-gray-500 text-sm">
+                © 2024 Rashedul Islam | Built with <span class="text-green-400">❤️</span> and lots of <span class="text-blue-400">☕</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+        const matrixArray = matrix.split("");
+
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
+
+        const drops = [];
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ff88';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 35);
+
+        // Typing Animation for Role
+        const roles = ['Backend Architect', 'API Designer', 'Database Engineer', 'DevOps Specialist', 'System Architect'];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const roleElement = document.getElementById('typing-role');
+
+        function typeRole() {
+            const currentRole = roles[roleIndex];
+            
+            if (isDeleting) {
+                roleElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                roleElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeRole, typeSpeed);
+        }
+
+        typeRole();
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const nav = document.querySelector('nav');
+        
+        menuToggle.addEventListener('click', () => {
+            // Simple mobile menu implementation
+            alert('Mobile menu would open here. This is a demo implementation.');
+        });
+
+        // Form Submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form processing
+            const button = this.querySelector('button');
+            const originalText = button.textContent;
+            
+            button.textContent = '[SENDING...]';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = '[MESSAGE_SENT]';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Project Buttons
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('[VIEW_CODE]')) {
+                button.addEventListener('click', function() {
+                    alert('This would open the project repository. In a real portfolio, this would link to GitHub or live demo.');
+                });
+            }
+        });
+
+        // Resize Canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Add some interactive elements
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) rotateX(5deg)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotateX(0)';
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f5fcce45d87e66',t:'MTc1NzkxNjkwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
