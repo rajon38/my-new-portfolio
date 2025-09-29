@@ -6,9 +6,11 @@ interface ProjectProps {
   status: string
   icon: string
   categoryColor: string
+  codeLink?: string
+  liveLink?: string
 }
 
-function ProjectCard({ title, category, description, technologies, status, icon, categoryColor }: ProjectProps) {
+function ProjectCard({ title, category, description, technologies, status, icon, categoryColor, codeLink, liveLink}: ProjectProps) {
   return (
     <div className="project-card rounded-lg p-6 relative">
       <div className="scan-line"></div>
@@ -29,7 +31,28 @@ function ProjectCard({ title, category, description, technologies, status, icon,
         ))}
       </div>
       <div className="flex justify-between items-center">
-        <button className="font-mono text-green-400 hover:text-green-300 text-sm">[VIEW_CODE]</button>
+        <div className="flex gap-3">
+          {codeLink && (
+            <a 
+              href={codeLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="font-mono text-green-400 hover:text-green-300 text-sm transition-colors hover:underline"
+            >
+              [VIEW_CODE]
+            </a>
+          )}
+          {liveLink && (
+            <a 
+              href={liveLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="font-mono text-blue-400 hover:text-blue-300 text-sm transition-colors hover:underline"
+            >
+              [LIVE_DEMO]
+            </a>
+          )}
+        </div>
         <div className="font-mono text-xs text-gray-500">STATUS: {status}</div>
       </div>
     </div>
@@ -39,46 +62,50 @@ function ProjectCard({ title, category, description, technologies, status, icon,
 export default function ProjectsSection() {
   const projects = [
     {
-      title: "Microservices Gateway",
-      category: "API_GATEWAY",
+      title: "CraveIt",
+      category: "REAL_TIME_FOOD_DELIVERY_APP",
       categoryColor: "text-green-400",
       description:
-        "High-performance API gateway with rate limiting, authentication, and service discovery. Handles 10k+ requests per second.",
+        "A TypeScript-based Node.js backend with Express, Prisma, MongoDB, real-time WebSocket support, cloud storage, authentication, and Stripe payments.",
       technologies: [
         { name: "Node.js", color: "green" },
-        { name: "Redis", color: "blue" },
-        { name: "Docker", color: "purple" },
+        { name: "WebSocket", color: "blue" },
+        { name: "Stripe", color: "purple" },
       ],
       status: "LIVE",
       icon: "🌐",
+      codeLink: "https://github.com/rajon38/craveIt.git",
+      liveLink: "https://play.google.com/store/search?q=craveit&c=apps&hl=en"
     },
     {
-      title: "WebSocket Chat Engine",
+      title: "Salon-service",
       category: "REAL_TIME",
       categoryColor: "text-blue-400",
       description:
-        "Scalable real-time messaging system with room management, message persistence, and presence indicators.",
+        "Scalable real-time messaging system with room management, message persistence, and presence indicators. A TypeScript-powered Node.js backend for a salon service app with Express, Prisma, MongoDB, real-time features, cloud storage, authentication, and Stripe payment integration.",
       technologies: [
-        { name: "Socket.io", color: "green" },
+        { name: "WebSocket", color: "green" },
         { name: "MongoDB", color: "orange" },
         { name: "Redis", color: "red" },
       ],
-      status: "BETA",
+      status: "DEV",
       icon: "⚡",
+      codeLink: "https://github.com/rajon38/salon-service.git"
     },
     {
-      title: "DeFi Analytics API",
-      category: "BLOCKCHAIN",
+      title: "Water-bill",
+      category: "Real-time Water Billing System",
       categoryColor: "text-purple-400",
       description:
-        "Cryptocurrency data aggregation service with real-time price feeds, portfolio tracking, and market analysis.",
+        "Real-time water billing system with usage tracking, payment processing, and analytics.",
       technologies: [
-        { name: "Web3.js", color: "yellow" },
-        { name: "GraphQL", color: "blue" },
-        { name: "PostgreSQL", color: "green" },
+        { name: "WebSocket", color: "green" },
+        { name: "MongoDB", color: "orange" },
+        { name: "Stripe", color: "purple" }
       ],
       status: "DEV",
       icon: "🔗",
+      codeLink: "https://github.com/rajon38/water-bill.git"
     },
   ]
 

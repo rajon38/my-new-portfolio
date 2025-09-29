@@ -125,7 +125,7 @@ export default function HeroSection() {
           <button onClick={() => scrollToSection("projects")}  className="neon-border bg-transparent text-green-400 px-8 py-4 font-mono font-semibold hover:bg-green-400 hover:text-black transition-all duration-300">
             [VIEW_PROJECTS]
           </button>
-          <a href="/public/Resume_Rashedul_Islam_Backend_Developer.pdf" download="Resume_Rashedul_Islam_Backend_Developer.pdf" className="border border-gray-600 text-white px-8 py-4 font-mono font-semibold hover:border-green-400 hover:text-green-400 transition-all duration-300">
+          <a href="/Resume_Rashedul_Islam_Backend_Developer.pdf" download="Resume_Rashedul_Islam_Backend_Developer.pdf" className="border border-gray-600 text-white px-8 py-4 font-mono font-semibold hover:border-green-400 hover:text-green-400 transition-all duration-300">
             [DOWNLOAD_CV]
           </a>
         </div>
