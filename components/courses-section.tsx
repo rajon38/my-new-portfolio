@@ -10,6 +10,32 @@ export default function CoursesSection() {
         </div>
 
         <div className="space-y-6">
+          {/* Next Level Web development */}
+          <div className="terminal-window">
+            <div className="terminal-header">
+              <div className="terminal-dot bg-red-500"></div>
+              <div className="terminal-dot bg-yellow-500"></div>
+              <div className="terminal-dot bg-green-500"></div>
+              <span className="font-mono text-xs text-gray-400 ml-2">next_level_web_dev.cert</span>
+            </div>
+            <div className="p-6">
+              <div className="flex flex-col md:flex-row md:justify-between md:items-start">
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-green-400 font-mono mb-2">
+                    Next Level Web Development 
+                  </h3>
+                  <p className="text-blue-400 font-mono">Programming Hero</p>
+                </div>
+                <div className="flex items-center gap-4 mt-2 md:mt-0">
+                  <div className="text-orange-400 font-mono text-sm bg-gray-800 px-3 py-1 rounded">
+                    Oct 2025 - Running
+                  </div>
+                  <div className="text-green-400 text-xl">💻</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* DevOps Bootcamp */}
           <div className="terminal-window">
             <div className="terminal-header">

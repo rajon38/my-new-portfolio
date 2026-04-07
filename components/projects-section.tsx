@@ -6,54 +6,58 @@ interface ProjectProps {
   status: string
   icon: string
   categoryColor: string
+  image: string
   codeLink?: string
   liveLink?: string
 }
 
-function ProjectCard({ title, category, description, technologies, status, icon, categoryColor, codeLink, liveLink}: ProjectProps) {
+function ProjectCard({ title, category, description, technologies, status, icon, categoryColor, image, codeLink, liveLink}: ProjectProps) {
   return (
-    <div className="project-card rounded-lg p-6 relative">
+    <div className="project-card rounded-lg overflow-hidden relative">
       <div className="scan-line"></div>
-      <div className="flex items-center justify-between mb-4">
-        <div className={`font-mono ${categoryColor} font-semibold`}>[{category}]</div>
-        <div className="text-2xl">{icon}</div>
-      </div>
-      <h3 className="text-xl font-bold mb-3">{title}</h3>
-      <p className="text-gray-400 mb-4 text-sm leading-relaxed">{description}</p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {technologies.map((tech, index) => (
-          <span
-            key={index}
-            className={`font-mono text-xs bg-${tech.color}-900 text-${tech.color}-400 px-2 py-1 rounded`}
-          >
-            {tech.name}
-          </span>
-        ))}
-      </div>
-      <div className="flex justify-between items-center">
-        <div className="flex gap-3">
-          {codeLink && (
-            <a 
-              href={codeLink} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="font-mono text-green-400 hover:text-green-300 text-sm transition-colors hover:underline"
-            >
-              [VIEW_CODE]
-            </a>
-          )}
-          {liveLink && (
-            <a 
-              href={liveLink} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="font-mono text-blue-400 hover:text-blue-300 text-sm transition-colors hover:underline"
-            >
-              [LIVE_DEMO]
-            </a>
-          )}
+      <img src={image} alt={title} className="w-full h-48 object-cover" />
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div className={`font-mono ${categoryColor} font-semibold`}>[{category}]</div>
+          <div className="text-2xl">{icon}</div>
         </div>
-        <div className="font-mono text-xs text-gray-500">STATUS: {status}</div>
+        <h3 className="text-xl font-bold mb-3">{title}</h3>
+        <p className="text-gray-400 mb-4 text-sm leading-relaxed">{description}</p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {technologies.map((tech, index) => (
+            <span
+              key={index}
+              className={`font-mono text-xs bg-${tech.color}-900 text-${tech.color}-400 px-2 py-1 rounded`}
+            >
+              {tech.name}
+            </span>
+          ))}
+        </div>
+        <div className="flex justify-between items-center">
+          <div className="flex gap-3">
+            {codeLink && (
+              <a 
+                href={codeLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="font-mono text-green-400 hover:text-green-300 text-sm transition-colors hover:underline"
+              >
+                [VIEW_CODE]
+              </a>
+            )}
+            {liveLink && (
+              <a 
+                href={liveLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="font-mono text-blue-400 hover:text-blue-300 text-sm transition-colors hover:underline"
+              >
+                [LIVE_DEMO]
+              </a>
+            )}
+          </div>
+          <div className="font-mono text-xs text-gray-500">STATUS: {status}</div>
+        </div>
       </div>
     </div>
   )
@@ -74,6 +78,7 @@ export default function ProjectsSection() {
       ],
       status: "LIVE",
       icon: "🌐",
+      image: "https://i.imgur.com/EFJFa74.jpeg",
       codeLink: "https://github.com/rajon38/craveIt.git",
       liveLink: "https://play.google.com/store/search?q=craveit&c=apps&hl=en"
     },
@@ -88,9 +93,11 @@ export default function ProjectsSection() {
         { name: "MongoDB", color: "orange" },
         { name: "Redis", color: "red" },
       ],
-      status: "DEV",
-      icon: "⚡",
-      codeLink: "https://github.com/rajon38/salon-service.git"
+      status: "LIVE",
+      icon: "🌐",
+      image: "https://i.imgur.com/dUzTpAo.jpeg",
+      codeLink: "https://github.com/rajon38/salon-service.git",
+      liveLink: "https://apps.apple.com/co/app/timelify-book-instantly/id6756337642"
     },
     {
       title: "Water-bill",
@@ -105,6 +112,7 @@ export default function ProjectsSection() {
       ],
       status: "DEV",
       icon: "🔗",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop",
       codeLink: "https://github.com/rajon38/water-bill.git"
     },
   ]

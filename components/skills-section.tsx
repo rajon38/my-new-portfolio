@@ -10,7 +10,12 @@ function SkillBar({ name, level, color }: SkillProps) {
       <span className="font-mono text-sm">{name}</span>
       <div className="flex space-x-1">
         {[...Array(5)].map((_, i) => (
-          <div key={i} className={`w-2 h-2 rounded-full ${i < level ? `bg-${color}-400` : "bg-gray-600"}`}></div>
+          <div
+            key={i}
+            className={`w-2 h-2 rounded-full ${
+              i < level ? `bg-${color}-400` : "bg-gray-600"
+            }`}
+          ></div>
         ))}
       </div>
     </div>
@@ -28,7 +33,21 @@ export default function SkillsSection() {
           <div className="w-32 h-1 bg-green-400 mx-auto"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+          
+          {/* FRONTEND */}
+          <div className="skill-card p-6 rounded-lg">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-mono font-semibold text-pink-400">[FRONTEND]</h3>
+              <div className="text-2xl">🎨</div>
+            </div>
+            <div className="space-y-3">
+              <SkillBar name="React.js" level={4} color="blue" />
+              <SkillBar name="Next.js" level={5} color="purple" />
+              <SkillBar name="Tailwind CSS" level={4} color="orange" />
+            </div>
+          </div>
+
           {/* Languages */}
           <div className="skill-card p-6 rounded-lg">
             <div className="flex items-center justify-between mb-4">
@@ -37,9 +56,8 @@ export default function SkillsSection() {
             </div>
             <div className="space-y-3">
               <SkillBar name="JavaScript" level={5} color="green" />
-              <SkillBar name="TypeScript" level={4} color="blue" />
-              <SkillBar name="C++" level={3} color="purple" />
-              <SkillBar name="C" level={3} color="orange" />
+              <SkillBar name="TypeScript" level={5} color="blue" />
+              <SkillBar name="Go" level={3} color="purple" />
             </div>
           </div>
 
@@ -50,7 +68,7 @@ export default function SkillsSection() {
               <div className="text-2xl">⚙️</div>
             </div>
             <div className="space-y-3">
-              <SkillBar name="Node.js" level={5} color="green" />
+              <SkillBar name="Node.js" level={5} color="purple" />
               <SkillBar name="Express.js" level={5} color="green" />
               <SkillBar name="MongoDB" level={4} color="green" />
             </div>
@@ -63,8 +81,9 @@ export default function SkillsSection() {
               <div className="text-2xl">🗄️</div>
             </div>
             <div className="space-y-3">
-              <SkillBar name="Prisma" level={4} color="purple" />
+              <SkillBar name="Prisma" level={5} color="purple" />
               <SkillBar name="Mongoose" level={5} color="green" />
+              <SkillBar name="PostgreSQL" level={4} color="blue" />
             </div>
           </div>
 
@@ -80,6 +99,7 @@ export default function SkillsSection() {
               <SkillBar name="Nginx" level={3} color="green" />
             </div>
           </div>
+
         </div>
       </div>
     </section>

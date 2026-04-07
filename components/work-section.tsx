@@ -16,7 +16,7 @@ export default function WorkSection() {
               <div className="terminal-dot bg-red-500"></div>
               <div className="terminal-dot bg-yellow-500"></div>
               <div className="terminal-dot bg-green-500"></div>
-              <span className="font-mono text-xs text-gray-400 ml-2">current_position.js</span>
+              <span className="font-mono text-xs text-gray-400 ml-2">backend_position.js</span>
             </div>
             <div className="p-6">
               <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
@@ -25,7 +25,7 @@ export default function WorkSection() {
                   <p className="text-blue-400 font-mono text-lg">SM Technology, Betopia, Dhaka</p>
                 </div>
                 <div className="text-orange-400 font-mono text-sm bg-gray-800 px-3 py-1 rounded mt-2 md:mt-0">
-                  Dec 2024 - Running
+                  Dec 2024 - Dec 2025
                 </div>
               </div>
               <div className="text-gray-300 leading-relaxed">

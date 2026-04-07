@@ -70,7 +70,7 @@ export default function HeroSection() {
               <div className="w-full h-full bg-black flex items-center justify-center relative">
                 <div className="text-center">
                   <img
-                    src="/Gemini_Generated_Image_lct6i5lct6i5lct6.png"
+                    src="/Image.jpeg"
                     alt="Rashedul Islam"
                     className="w-full h-full object-cover rounded-full border-4 border-green-400/50"
                   />

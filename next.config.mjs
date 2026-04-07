@@ -8,6 +8,17 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
+    domains: ['drive.google.com', 'lh3.googleusercontent.com', 'images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'drive.google.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      }
+    ]
   },
 }
 
