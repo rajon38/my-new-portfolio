@@ -48,6 +48,33 @@ export default function Navigation() {
             </svg>
           </button>
         </div>
+        
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden mt-4 flex flex-col space-y-4 font-mono text-sm bg-gray-900 p-4 rounded-lg">
+            <button onClick={() => { scrollToSection("home"); setIsMenuOpen(false); }} className="hover:text-green-400 transition-colors text-left">
+              [home]
+            </button>
+            <button onClick={() => { scrollToSection("about"); setIsMenuOpen(false); }} className="hover:text-green-400 transition-colors text-left">
+              [about]
+            </button>
+            <button onClick={() => { scrollToSection("work"); setIsMenuOpen(false); }} className="hover:text-green-400 transition-colors text-left">
+              [work]
+            </button>
+            <button onClick={() => { scrollToSection("skills"); setIsMenuOpen(false); }} className="hover:text-green-400 transition-colors text-left">
+              [skills]
+            </button>
+            <button onClick={() => { scrollToSection("education"); setIsMenuOpen(false); }} className="hover:text-green-400 transition-colors text-left">
+              [education]
+            </button>
+            <button onClick={() => { scrollToSection("projects"); setIsMenuOpen(false); }} className="hover:text-green-400 transition-colors text-left">
+              [projects]
+            </button>
+            <button onClick={() => { scrollToSection("contact"); setIsMenuOpen(false); }} className="hover:text-green-400 transition-colors text-left">
+              [contact]
+            </button>
+          </div>
+        )}
       </div>
     </nav>
   )
