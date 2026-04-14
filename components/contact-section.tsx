@@ -50,21 +50,21 @@ export default function ContactSection() {
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          <div className="skill-card p-6 rounded-lg">
+          <a href="mailto:rashedul.rajon@gmail.com" className="skill-card p-6 rounded-lg hover:scale-105 transition-transform cursor-pointer">
             <div className="text-3xl mb-4">📧</div>
             <div className="font-mono text-green-400 font-semibold mb-2">[EMAIL]</div>
-            <div className="text-gray-400 text-sm">rashedul.rajon@gmail.com</div>
-          </div>
-          <div className="skill-card p-6 rounded-lg">
+            <div className="text-gray-400 text-sm hover:text-green-400 transition-colors">rashedul.rajon@gmail.com</div>
+          </a>
+          <a href="https://linkedin.com/in/rashedul-islam-mern-developer" target="_blank" rel="noopener noreferrer" className="skill-card p-6 rounded-lg hover:scale-105 transition-transform cursor-pointer">
             <div className="text-3xl mb-4">💼</div>
             <div className="font-mono text-blue-400 font-semibold mb-2">[LINKEDIN]</div>
-            <div className="text-gray-400 text-sm">linkedin.com/in/rashedul-islam-mern-developer</div>
-          </div>
-          <div className="skill-card p-6 rounded-lg" >
+            <div className="text-gray-400 text-sm hover:text-blue-400 transition-colors">linkedin.com/in/rashedul-islam-mern-developer</div>
+          </a>
+          <a href="https://github.com/rajon38" target="_blank" rel="noopener noreferrer" className="skill-card p-6 rounded-lg hover:scale-105 transition-transform cursor-pointer">
             <div className="text-3xl mb-4">🐙</div>
             <div className="font-mono text-purple-400 font-semibold mb-2">[GITHUB]</div>
-            <div className="text-gray-400 text-sm" >github.com/rajon38</div>
-          </div>
+            <div className="text-gray-400 text-sm hover:text-purple-400 transition-colors">github.com/rajon38</div>
+          </a>
         </div>
 
         <div className="terminal-window max-w-2xl mx-auto">

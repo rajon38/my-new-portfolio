@@ -7,9 +7,9 @@ import SkillsSection from "@/components/skills-section"
 import EducationSection from "@/components/education-section"
 import CoursesSection from "@/components/courses-section"
 import ProjectsSection from "@/components/projects-section"
+import BlogsSection from "@/components/blogs-section"
 import ContactSection from "@/components/contact-section"
 import Footer from "@/components/footer"
-import MatrixBackground from "@/components/matrix-background"
 import FloatingCode from "@/components/floating-code"
 
 export default function Home() {
@@ -24,6 +24,7 @@ export default function Home() {
       <EducationSection />
       <CoursesSection />
       <ProjectsSection />
+      <BlogsSection />
       <ContactSection />
       <Footer />
     </div>

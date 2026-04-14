@@ -22,7 +22,6 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Rashedul Islam - Backend Architect",
   description: "Backend Developer specializing in scalable architectures, APIs, and cloud-native solutions",
-  generator: "v0.app",
 }
 
 export default function RootLayout({
