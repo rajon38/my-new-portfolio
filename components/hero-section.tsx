@@ -70,12 +70,12 @@ export default function HeroSection() {
               <div className="w-full h-full bg-black flex items-center justify-center relative">
                 <div className="text-center">
                   <img
-                    src="/Image.jpeg"
+                    src="/Image2.png"
                     alt="Rashedul Islam"
                     className="w-full h-full object-cover rounded-full border-4 border-green-400/50"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-400 to-transparent opacity-5 animate-pulse"></div>
+                {/* <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-400 to-transparent opacity-5 animate-pulse"></div> */}
               </div>
             </div>
 

@@ -19,15 +19,39 @@ export default function ContactSection() {
     setIsSubmitting(true)
     setSubmitStatus("[SENDING...]")
 
-    // Simulate form processing
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        const error = await response.json()
+        setSubmitStatus("[ERROR]")
+        setTimeout(() => {
+          setSubmitStatus("")
+          setIsSubmitting(false)
+        }, 2000)
+        return
+      }
+
       setSubmitStatus("[MESSAGE_SENT]")
       setTimeout(() => {
         setSubmitStatus("")
         setIsSubmitting(false)
         setFormData({ name: "", email: "", subject: "", message: "" })
       }, 2000)
-    }, 1500)
+    } catch (error) {
+      console.error("Error sending message:", error)
+      setSubmitStatus("[ERROR]")
+      setTimeout(() => {
+        setSubmitStatus("")
+        setIsSubmitting(false)
+      }, 2000)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
